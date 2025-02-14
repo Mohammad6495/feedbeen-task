@@ -7,9 +7,15 @@ import { useEffect, useRef, useCallback, useState } from "react";
 import Post from "@/app/news/post";
 import { getNews } from "@/app/news/lib";
 import { Button } from "@heroui/button";
+import { NewsItem } from "@/types";
 
-const NewsList = ({ initialData }: { initialData?: any }) => {
-  
+const NewsList = ({ initialData }: {
+  initialData?: {
+    news: NewsItem[];
+    nextPage: number | null;
+  }[]
+}) => {
+
   const router = useRouter();
   const pathname = usePathname();
   const observer = useRef<IntersectionObserver | null>(null);
